@@ -21,25 +21,30 @@ useEffect(() => {
   fetch(`https://api.themoviedb.org/3/search/tv?api_key=${api_key}&query=scrubs`)
     .then(res => res.json())
     .then(data => setSerie(data.results)); 
-}, [api_key]);
+}, []);
+
+
 //film e serie caricati con la ricerca(dopo l'invio del form)
-function RicercaFilm(e){
+function Ricerca(e){
 e.preventDefault()
 
-    const link_ricerca = `https://api.themoviedb.org/3/search/movie?api_key=${api_key}&query=${ricerca}`;
-
-    fetch(link_ricerca)
+//RICERCA FILM
+    fetch(`https://api.themoviedb.org/3/search/movie?api_key=${api_key}&query=${ricerca}`)
       .then((res) => res.json())
       .then((data) => {
         setFilm(data.results);
       })
+//RICERCA SERIE
+      fetch(`https://api.themoviedb.org/3/search/tv?api_key=${api_key}&query=${ricerca}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setSerie(data.results);
+      })
   }
-
- 
-
+  
   return (
     <>
-    <form onSubmit={RicercaFilm}>
+    <form onSubmit={Ricerca}>
       <input type="text" value={ricerca} onChange={(e => setRicerca(e.target.value))}></input>
       <button>Ricerca</button>
     </form>
@@ -52,8 +57,8 @@ e.preventDefault()
             <p>Titolo: {item.title}</p>
             <p>Titolo Reale:{item.original_title}</p>
             <p>Lingua:<span className={`fi fi-${item.original_language === 'en' ? 'us' : item.original_language}`}></span>
-  <span style={{ marginLeft: '10px' }}>({item.original_language})</span>
-</p>
+            <span style={{ marginLeft: '10px' }}>({item.original_language})</span>
+           </p>
             <p>Voto: {item.vote_average}</p>
           </div>
         ))
@@ -65,10 +70,10 @@ e.preventDefault()
         serie.map((item) =>(
           <div key={item.id}>
             <p>Titolo: {item.name}</p>
-             <p>Titolo Reale:{item.original_title}</p>
+             <p>Titolo Reale:{item.original_name}</p>
             <p>Lingua:<span className={`fi fi-${item.original_language === 'en' ? 'us' : item.original_language}`}></span>
-  <span style={{ marginLeft: '10px' }}>({item.original_language})</span>
-</p>
+            <span style={{ marginLeft: '10px' }}>({item.original_language})</span>
+            </p>
             <p>Voto: {item.vote_average}</p>
           </div>
         ))
