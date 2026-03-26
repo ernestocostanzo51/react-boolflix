@@ -3,8 +3,7 @@ import { useEffect } from "react";
 import "/node_modules/flag-icons/css/flag-icons.min.css";
 function App() {
   const api_key = import.meta.env.VITE_API_KEY
-  const link_api_film = `https://api.themoviedb.org/3/search/movie?api_key=${api_key}&query=ritorno+al+futuro`
-  const link_api_serie = `https://api.themoviedb.org/3/search/tv?api_key=${api_key}&language=it_IT&query=scrubs`
+  
 
   const [film, setFilm] = useState([])
   const [serie, setSerie] = useState([])
