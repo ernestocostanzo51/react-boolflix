@@ -19,7 +19,17 @@ useEffect(() =>{
 
 function RicercaFilm(e){
 e.preventDefault()
-}
+
+    const link_ricerca = `https://api.themoviedb.org/3/search/movie?api_key=${api_key}&query=${ricerca}`;
+
+    fetch(link_ricerca)
+      .then((res) => res.json())
+      .then((data) => {
+        setFilm(data.results);
+      })
+  }
+
+
 
 console.log(film)
 
@@ -36,10 +46,10 @@ console.log(film)
       {
         film.map((item) =>(
           <div key={item.id}>
-            <p>{item.title}</p>
-            <p>{item.original_title}</p>
-            <p>{item.original_language}</p>
-            <p>{item.vote_average}</p>
+            <p>Titolo: {item.title}</p>
+            <p>Titolo Reale:{item.original_title}</p>
+            <p>Lingua:{item.original_language}</p>
+            <p>Voto: {item.vote_average}</p>
           </div>
         ))
 
