@@ -59,7 +59,13 @@ e.preventDefault()
             <p>Lingua:<span className={`fi fi-${item.original_language === 'en' ? 'us' : item.original_language}`}></span>
             <span style={{ marginLeft: '10px' }}>({item.original_language})</span>
            </p>
-            <p>Voto: {item.vote_average}</p>
+            <p>{(item.vote_average/2).toFixed(1)}
+              {(item.vote_average/2).toFixed(1) > 0 && <span style={{ color: "gold" }}>★</span>}
+              {(item.vote_average/2).toFixed(1) > 1 && <span style={{ color: "gold" }}>★</span>}
+              {(item.vote_average/2).toFixed(1) > 2 && <span style={{ color: "gold" }}>★</span>}
+              {(item.vote_average/2).toFixed(1) > 3 && <span style={{ color: "gold" }}>★</span>}
+              {(item.vote_average/2).toFixed(1) > 4 && <span style={{ color: "gold" }}>★</span>}
+              </p>
           </div>
         ))
 
@@ -75,7 +81,13 @@ e.preventDefault()
             <p>Lingua:<span className={`fi fi-${item.original_language === 'en' ? 'us' : item.original_language}`}></span>
             <span style={{ marginLeft: '10px' }}>({item.original_language})</span>
             </p>
-            <p>Voto: {item.vote_average}</p>
+            <p>Voto: {(item.vote_average/2).toFixed(1)}
+              {(item.vote_average/2).toFixed(1) > 0 && <span style={{ color: "gold" }}>★</span>}
+              {(item.vote_average/2).toFixed(1) > 1 && <span style={{ color: "gold" }}>★</span>}
+              {(item.vote_average/2).toFixed(1) > 2 && <span style={{ color: "gold" }}>★</span>}
+              {(item.vote_average/2).toFixed(1) > 3 && <span style={{ color: "gold" }}>★</span>}
+              {(item.vote_average/2).toFixed(1) > 4 && <span style={{ color: "gold" }}>★</span>}
+            </p>
           </div>
         ))
       }
