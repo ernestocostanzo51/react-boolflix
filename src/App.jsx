@@ -3,7 +3,7 @@ import { useEffect } from "react";
 
 function App() {
   const api_key = import.meta.env.VITE_API_KEY
-  const link_api = `https://api.themoviedb.org/3/search/movie?api_key=${api_key}d&query=ritorno+al+futuro`
+  const link_api = `https://api.themoviedb.org/3/search/movie?api_key=${api_key}&query=ritorno+al+futuro`
   const [film, setFilm] = useState([])
 console.log(import.meta.env.VITE_API_KEY);
 
@@ -13,10 +13,9 @@ useEffect(() =>{
   .then(data => {
     setFilm(data.results)
   })
-})
+}, [])
 
 console.log(film)
-
 
 
   return (
