@@ -34,6 +34,14 @@ console.log(film)
 
     <div>
       {
+        film.map((item) =>(
+          <div key={item.id}>
+            <p>{item.title}</p>
+            <p>{item.original_title}</p>
+            <p>{item.original_language}</p>
+            <p>{item.vote_average}</p>
+          </div>
+        ))
 
 
       }
