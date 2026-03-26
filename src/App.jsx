@@ -52,7 +52,8 @@ e.preventDefault()
       <h1>FILM</h1>
       {
         film.map((item) =>(
-          <div key={item.id}>
+          <div key={item.id} className="card">
+            <img src={`https://image.tmdb.org/t/p/w185${item.poster_path}`}/>
             <p>Titolo: {item.title}</p>
             <p>Titolo Reale:{item.original_title}</p>
             <p>Lingua:<span className={`fi fi-${item.original_language === 'en' ? 'us' : item.original_language}`}></span>
@@ -67,7 +68,8 @@ e.preventDefault()
       <h1>SERIE</h1>
       {
         serie.map((item) =>(
-          <div key={item.id}>
+          <div key={item.id} className="card">
+             <img src={`https://image.tmdb.org/t/p/w342${item.poster_path}`}/>
             <p>Titolo: {item.name}</p>
              <p>Titolo Reale:{item.original_name}</p>
             <p>Lingua:<span className={`fi fi-${item.original_language === 'en' ? 'us' : item.original_language}`}></span>
