@@ -8,7 +8,7 @@ function App() {
   const [film, setFilm] = useState([])
   const [ricerca, setRicerca] = useState("")
 
-
+//film caricati di default
 useEffect(() =>{
   fetch(link_api)
   .then(res => res.json())
@@ -16,7 +16,7 @@ useEffect(() =>{
     setFilm(data.results)
   })
 }, [])
-
+//film caricati con la ricerca(dopo l'invio del form)
 function RicercaFilm(e){
 e.preventDefault()
 
@@ -29,18 +29,12 @@ e.preventDefault()
       })
   }
 
-
-
-console.log(film)
-
-
   return (
     <>
     <form onSubmit={RicercaFilm}>
       <input type="text" value={ricerca} onChange={(e => setRicerca(e.target.value))}></input>
       <button>Ricerca</button>
     </form>
-
 
     <div>
       {
