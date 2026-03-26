@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useEffect } from "react";
-
+import "/node_modules/flag-icons/css/flag-icons.min.css";
 function App() {
   const api_key = import.meta.env.VITE_API_KEY
   const link_api = `https://api.themoviedb.org/3/search/movie?api_key=${api_key}&query=ritorno+al+futuro`
@@ -29,6 +29,8 @@ e.preventDefault()
       })
   }
 
+ 
+
   return (
     <>
     <form onSubmit={RicercaFilm}>
@@ -42,7 +44,9 @@ e.preventDefault()
           <div key={item.id}>
             <p>Titolo: {item.title}</p>
             <p>Titolo Reale:{item.original_title}</p>
-            <p>Lingua:{item.original_language}</p>
+            <p>Lingua:<span className={`fi fi-${item.original_language === 'en' ? 'us' : item.original_language}`}></span>
+  <span style={{ marginLeft: '10px' }}>({item.original_language})</span>
+</p>
             <p>Voto: {item.vote_average}</p>
           </div>
         ))
