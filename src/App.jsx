@@ -28,13 +28,13 @@ function Ricerca(e){
 e.preventDefault()
 
 //RICERCA FILM
-    fetch(`https://api.themoviedb.org/3/search/movie?api_key=${api_key}&query=${ricerca}`)
+    fetch(`https://api.themoviedb.org/3/search/movie?api_key=${api_key}&query=${ricerca.trim()}`)
       .then((res) => res.json())
       .then((data) => {
         setFilm(data.results);
       })
 //RICERCA SERIE
-      fetch(`https://api.themoviedb.org/3/search/tv?api_key=${api_key}&query=${ricerca}`)
+      fetch(`https://api.themoviedb.org/3/search/tv?api_key=${api_key}&query=${ricerca.trim()}`)
       .then((res) => res.json())
       .then((data) => {
         setSerie(data.results);
