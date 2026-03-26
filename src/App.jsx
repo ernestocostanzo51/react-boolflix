@@ -75,13 +75,16 @@ e.preventDefault()
       {
         serie.map((item) =>(
           <div key={item.id} className="card">
-             <img src={`https://image.tmdb.org/t/p/w342${item.poster_path}`}/>
+             <img src={`https://image.tmdb.org/t/p/w185${item.poster_path}`}/>
             <p>Titolo: {item.name}</p>
-             <p>Titolo Reale:{item.original_name}</p>
-            <p>Lingua:<span className={`fi fi-${item.original_language === 'en' ? 'us' : item.original_language}`}></span>
+             <p>Titolo Reale: {item.original_name}</p>
+            <p>Lingua: <span className={`fi fi-${item.original_language === 'en' ? 'us' : item.original_language}`}> </span>
             <span style={{ marginLeft: '10px' }}>({item.original_language})</span>
             </p>
             <p>Voto: {(item.vote_average/2).toFixed(1)}
+              
+                {item.vote_average === 0 && <span> NO VALUE </span>}
+              
               {(item.vote_average/2).toFixed(1) > 0 && <span style={{ color: "gold" }}>★</span>}
               {(item.vote_average/2).toFixed(1) > 1 && <span style={{ color: "gold" }}>★</span>}
               {(item.vote_average/2).toFixed(1) > 2 && <span style={{ color: "gold" }}>★</span>}
