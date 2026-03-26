@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useEffect } from "react";
 import "/node_modules/flag-icons/css/flag-icons.min.css";
+import AppHeader from "./components/appHeader";
 function App() {
   const api_key = import.meta.env.VITE_API_KEY
   
@@ -24,30 +25,13 @@ useEffect(() => {
 
 
 //film e serie caricati con la ricerca(dopo l'invio del form)
-function Ricerca(e){
-e.preventDefault()
 
-//RICERCA FILM
-    fetch(`https://api.themoviedb.org/3/search/movie?api_key=${api_key}&query=${ricerca.trim()}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setFilm(data.results);
-      })
-//RICERCA SERIE
-      fetch(`https://api.themoviedb.org/3/search/tv?api_key=${api_key}&query=${ricerca.trim()}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setSerie(data.results);
-      })
-  }
   
   return (
     <>
-    <form onSubmit={Ricerca}>
-      <input type="text" value={ricerca} onChange={(e => setRicerca(e.target.value))}></input>
-      <button>Ricerca</button>
-    </form>
-
+  
+    
+    <AppHeader/>
     <div>
       <h1>FILM</h1>
       {
@@ -60,6 +44,9 @@ e.preventDefault()
             <span style={{ marginLeft: '10px' }}>({item.original_language})</span>
            </p>
             <p>{(item.vote_average/2).toFixed(1)}
+
+              {item.vote_average === 0 && <span> NO VALUE </span>}
+              
               {(item.vote_average/2).toFixed(1) > 0 && <span style={{ color: "gold" }}>★</span>}
               {(item.vote_average/2).toFixed(1) > 1 && <span style={{ color: "gold" }}>★</span>}
               {(item.vote_average/2).toFixed(1) > 2 && <span style={{ color: "gold" }}>★</span>}
