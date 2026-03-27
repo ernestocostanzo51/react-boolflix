@@ -1,6 +1,6 @@
 import AppHeader from "../components/appHeader"
 import { Outlet } from "react-router-dom"
-export default function Layout(){
+export default function Layout({setFilm, setSerie, api_key}){
     return(
         <>
 <AppHeader

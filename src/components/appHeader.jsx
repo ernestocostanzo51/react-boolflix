@@ -36,7 +36,7 @@ export default function AppHeader({ setFilm, setSerie, api_key }) {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <NavLink className="nav-link" to="/">Home</NavLink>
+              <NavLink className="nav-link" to="/">HomePage</NavLink>
             </li>
             <li className="nav-item">
               <NavLink className="nav-link" to="/film">Film</NavLink>
