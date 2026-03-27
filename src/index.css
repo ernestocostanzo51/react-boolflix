@@ -1,3 +1,21 @@
 @import url('bootstrap')
 
 
+.card{
+    position: relative  ;
+    background-color: black;
+    color: red;
+}
+
+
+
+.card-info{
+    position: absolute;
+    z-index: 2;
+}
+
+card:hover .card-info {
+  opacity: 1; 
+  visibility: visible;
+}
+

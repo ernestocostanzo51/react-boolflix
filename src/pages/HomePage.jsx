@@ -18,11 +18,13 @@ export default function HomePage({film, serie, setFilm, setSerie, api_key}) {
     })
     .catch(err => console.error("Errore serie default:", err));
     
-}, []); // <--- Le parentesi quadre vuote dicono a React: "Fallo solo una volta all'avvio"
+}, []); 
   return (
     <>
+     <section className="bg-dark">
+
      
-      <div className="container mt-5">
+      <div className="container mt-5 bg-dark">
         <h1 className="text-white">FILM</h1>
         <div className="row g-4">
           {film.map((item) => (
@@ -54,7 +56,7 @@ export default function HomePage({film, serie, setFilm, setSerie, api_key}) {
       </div>
 
       
-      <div className="container mt-5 mb-5">
+      <div className="container mt-5 mb-5 bg-dark">
         <h1 className="text-white">SERIE</h1>
         <div className="row g-4">
           {serie.map((item) => (
@@ -84,6 +86,7 @@ export default function HomePage({film, serie, setFilm, setSerie, api_key}) {
           ))}
         </div>
       </div>
+      </section>
     </>
   );
 }
