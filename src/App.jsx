@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { useEffect } from "react";
 import "/node_modules/flag-icons/css/flag-icons.min.css";
+import Layout from './layout/layout'
 
 function App() {
   const api_key = import.meta.env.VITE_API_KEY
   
-  const [ricerca, setRicerca] = useState("")
+  
   const [film, setFilm] = useState([])
   const [serie, setSerie] = useState([])
   
@@ -23,45 +24,11 @@ useEffect(() => {
     .then(data => setSerie(data.results)); 
 }, []);
 
-    function Ricerca(e){
-      
 
-e.preventDefault()
-
-//RICERCA FILM
-    fetch(`https://api.themoviedb.org/3/search/movie?api_key=${api_key}&query=${ricerca.trim()}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setFilm(data.results);
-      })
-//RICERCA SERIE
-      fetch(`https://api.themoviedb.org/3/search/tv?api_key=${api_key}&query=${ricerca.trim()}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setSerie(data.results);
-      })
-    }
-//film e serie caricati con la ricerca(dopo l'invio del form)
-
-  
   return (
     <>
   
-     <header>
-<div className="container">
-      <div className="row">
-        <div className="col">
-       <form onSubmit={Ricerca}>
-      <input type="text" value={ricerca} onChange={(e => setRicerca(e.target.value))}></input>
-      <button>Ricerca</button>
-    </form>
-        </div>
-      </div>
-    </div>
-  </header>
-    
-    
-     
+
       <div className="container">
          <h1>FILM</h1>
         <div className="row">
@@ -96,11 +63,12 @@ e.preventDefault()
             <h1>SERIE</h1>
             <div className="row">
                {
-    serie.map((item) =>(
+          serie.map((item) =>(
           <div className="col-2"key={item.id}>
           <div  className="card">
             <img src={`https://image.tmdb.org/t/p/w342${item.poster_path}`}/>
-            <p>Titolo: {item.name}</p>
+            <div className="card-info">
+              <p>Titolo: {item.name}</p>
             <p>Titolo Reale:{item.original_name}</p>
             <p>Lingua:<span className={`fi fi-${item.original_language === 'en' ? 'us' : item.original_language}`}></span>
             <span style={{ marginLeft: '10px' }}>({item.original_language})</span>
@@ -115,7 +83,7 @@ e.preventDefault()
               {(item.vote_average/2).toFixed(1) > 3 && <span style={{ color: "gold" }}>★</span>}
               {(item.vote_average/2).toFixed(1) > 4 && <span style={{ color: "gold" }}>★</span>}
               </p>
-          
+            </div>
     </div>
  </div>
         ))}
