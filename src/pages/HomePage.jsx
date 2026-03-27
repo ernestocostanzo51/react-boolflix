@@ -1,8 +1,27 @@
+import { useEffect } from "react";
+export default function HomePage({film, serie, setFilm, setSerie, api_key}) {
 
-export default function HomePage({ film, serie }) {
+  useEffect(() => {
+  // 1. Caricamento Film di default 
+  fetch(`https://api.themoviedb.org/3/search/movie?api_key=${api_key}&query=ritorno+al+futuro`)
+    .then(res => res.json())
+    .then(data => {
+      setFilm(data.results);
+    })
+    .catch(err => console.error("Errore film default:", err));
+
+  // 2. Caricamento Serie di default 
+  fetch(`https://api.themoviedb.org/3/search/tv?api_key=${api_key}&query=scrubs`)
+    .then(res => res.json())
+    .then(data => {
+      setSerie(data.results);
+    })
+    .catch(err => console.error("Errore serie default:", err));
+    
+}, []); // <--- Le parentesi quadre vuote dicono a React: "Fallo solo una volta all'avvio"
   return (
     <>
-      {/* SEZIONE FILM */}
+     
       <div className="container mt-5">
         <h1 className="text-white">FILM</h1>
         <div className="row g-4">
@@ -34,7 +53,7 @@ export default function HomePage({ film, serie }) {
         </div>
       </div>
 
-      {/* SEZIONE SERIE */}
+      
       <div className="container mt-5 mb-5">
         <h1 className="text-white">SERIE</h1>
         <div className="row g-4">

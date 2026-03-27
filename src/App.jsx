@@ -6,6 +6,8 @@ import HomePage from './pages/HomePage'
 import { useState } from "react";
 
 function App() {
+
+  
   const [film, setFilm] = useState([]);
   const [serie, setSerie] = useState([]);
   
